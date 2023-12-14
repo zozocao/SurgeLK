@@ -22,3 +22,4 @@ function finalizeResponse(content) {
 }
 
 $done(isQX ? finalizeResponse(chxm1023) : chxm1023);
+$done({status:200,headers:{'Content-Type':'application/json'},body:JSON.stringify(obj)});
