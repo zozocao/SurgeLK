@@ -22,4 +22,10 @@ function finalizeResponse(content) {
 }
 
 $done(isQX ? finalizeResponse(chxm1023) : chxm1023);
+const obj = {
+  "data": {
+    "premiumAccess": true
+  }
+};
+$done({status:200,headers:{'Content-Type':'application/json'},body:JSON.stringify(obj)});
 $done({status:200,headers:{'Content-Type':'application/json'},body:JSON.stringify(obj)});
