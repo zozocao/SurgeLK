@@ -2,13 +2,7 @@
 #!desc=UnlockPremium
 
 [URL Rewrite]
-^https:\/\/in\.appcenter\.ms\/logs - reject
-^https?:\/\/.+\/(.*mmo|.*bet|.*adblock|.*advertise|.*anti|.*devtool|.*logging|pagead) - reject
-^https:\/\/(jp|www)\.pornhub\.com\/_xa\/ads.* - reject
 ^https:\/\/api\.vtvgiaitri\.vn\/api\/v\d\/advertising - reject
-https?:\/\/[0-9a-zA-Z]{10,16}\.cloudfront\.net\/\?[a-z]{3,7}=\d{4,8} - reject
-^https:/?\/.*?.xvideos-cdn.com.*?\/js\/.*?\/header\/.*?.js - reject
-^https?:\/\/log\.api\.zaloapp\.com\/tracking - reject
 
 [Rule]
 AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT-NO-DROP
@@ -61,4 +55,4 @@ Buy = type=http-response,pattern=(^https:\/\/buy\.itunes\.apple\.com\/verifyRece
 
 
 [MITM]
-hostname = %APPEND% sub.store, ap*.intsig.net, app.monkeyuni.net, spclient.wg.spotify.com, in.appcenter.ms, api.vtvgiaitri.vn, *phim*.*, *.pornhub.com, *.cloudfront.net, *.xvideos-cdn.com, buy.itunes.apple.com, *.googlevideo.com, youtubei.googleapis.com
+hostname = %APPEND% sub.store, ap*.intsig.net, app.monkeyuni.net, spclient.wg.spotify.com, api.vtvgiaitri.vn, buy.itunes.apple.com, *.googlevideo.com, youtubei.googleapis.com
