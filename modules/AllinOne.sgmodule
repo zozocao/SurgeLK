@@ -53,4 +53,4 @@ iTranslate = type=http-response,pattern=^https:\/\/ssl-api\.itranslateapp\.com\/
 
 #************************************#
 [MITM]
-hostname = %APPEND% ap*.intsig.net, app.monkeyuni.net, spclient.wg.spotify.com, in.appcenter.ms, api.vtvgiaitri.vn, *phim*.*, *.pornhub.com, *.cloudfront.net, *.xvideos-cdn.com, buy.itunes.apple.com, *api.itranslateapp.com
+hostname = %APPEND% sub.store, ap*.intsig.net, app.monkeyuni.net, spclient.wg.spotify.com, in.appcenter.ms, api.vtvgiaitri.vn, *phim*.*, *.pornhub.com, *.cloudfront.net, *.xvideos-cdn.com, buy.itunes.apple.com, *api.itranslateapp.com
