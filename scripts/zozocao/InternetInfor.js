@@ -17,7 +17,7 @@ $httpClient.get(url, function(error, response, data){
     let emoji = getFlagEmoji(jsonData.countryCode)
     let tp = jsonData.city
     let ncc = jsonData.isp
-    let author = BanhsBao
+    let author = BanhsBao.txt
     let content = `IP: ${ip}\nNhà Mạng: ${ncc}\nVị Trí: ${emoji}${qg} - ${tp}`: ${author}\nBy;
   
   body = {
