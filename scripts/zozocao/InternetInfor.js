@@ -18,7 +18,7 @@ $httpClient.get(url, function(error, response, data){
     let tp = jsonData.city
     let ncc = jsonData.isp
     let author = BanhsBao.txt
-    let content = `IP: ${ip}\nNhà Mạng: ${ncc}\nVị Trí: ${emoji}${qg} - ${tp}`: ${author}\nBy;
+    let content = `IP: ${ip}\nNhà Mạng: ${ncc}\nVị Trí: ${emoji}${qg} - ${tp}: ${author}\nBy`;
   
   body = {
     title: "Thông Tin Mạng",
