@@ -1,4 +1,4 @@
-#!name=Surge InternetInfor
+#!name=Internet Information
 #!desc=InternetInfor
 [Panel]
 InternetInfor = script-name=InternetInfor,title=InternetInfor,content=Please refresh,style=info,update-interval=60
