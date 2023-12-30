@@ -1,8 +1,8 @@
 /*
 OLD_IPA
 @file: old_ipa.js
-@author: langkhach
-@createTime: 200312
+@author: zozocao
+@createTime: 202312
 */
 const $ = API("OLD_IPA", true);
 
