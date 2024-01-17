@@ -1,6 +1,14 @@
 #!name=PhuGaPremium
 #!desc=UnlockPremium
 
+[Panel]
+ReloadProfile = script-name=ReloadProfile,update-interval=1
+NetInfoPanel=title="",content="",style=info,script-name=net-info-panel.js,update-interval=1
+NetSpeed = script-name=NetSpeed,update-interval=-1
+
+[Host]
+ip-api.com = 208.95.112.1
+
 [Rule]
 AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT-NO-DROP
 
@@ -40,6 +48,11 @@ Spotify-json-Premium = type=http-request,pattern=^https:\/\/spclient\.wg\.spotif
 Nicegram = type=http-response,pattern=^https?:\/\/(nicegram\.cloud\/api\/v\d\/user\/info|restore-access\.indream\.app\/restoreAccess),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/Nicegram.js,script-update-interval=0
 
 #************************************#
+#Panel Network
+net-info-panel.js=script-path=https://raw.githubusercontent.com/lonely0811/olsd/main/net.js,type=generic,timeout=30
+ReloadProfile = type=generic,timeout=10,script-path= https://raw.githubusercontent.com/lonely0811/olsd/main/Reloadconfig.js ,argument=icon=square.and.arrow.down.fill&color=#f6c970
+NetSpeed = type=generic,script-path=https://raw.githubusercontent.com/lonely0811/olsd/main/netspeed.js,argument=title=NetSpeed&iconfast=bolt&iconmid=hare&iconslow=tortoise&colorlow=#06D6A0&colormid=#FFD166&colorhigh=#EF476F&mb=3
+
 
 [Map Local]
 ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data="https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/blank.txt"
