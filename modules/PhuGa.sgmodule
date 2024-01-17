@@ -1,6 +1,13 @@
 #!name=AllinOne
 #!desc=UnlockPremium
 
+[Panel]
+ReloadProfile = script-name=ReloadProfile,update-interval=1
+NetInfoPanel=title="",content="",style=info,script-name=net-info-panel.js,update-interval=1
+NetSpeed = script-name=NetSpeed,update-interval=-1
+
+[Host]
+ip-api.com = 208.95.112.1
 
 [Rule]
 AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT-NO-DROP
