@@ -5,4 +5,4 @@ const obj = {
     "subscription": true
   }
 };
-$done({status:200,headers:{'Content-Type':'application/json'},body:JSON.stringify(obj)});
+$done({body:JSON.stringify(obj)});
