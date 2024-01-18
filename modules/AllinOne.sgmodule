@@ -51,4 +51,4 @@ camera360-Mix = requires-body=1,script-path=https://raw.githubusercontent.com/zo
 
 
 [MITM]
-hostname = %APPEND% sub.store, ap*.intsig.net, app.monkeyuni.net, spclient.wg.spotify.com, api.vtvgiaitri.vn, *.googlevideo.com, youtubei.googleapis.com, *.camera360.com
+hostname = %APPEND% sub.store, ap*.intsig.net, app.monkeyuni.net, spclient.wg.spotify.com, api.vtvgiaitri.vn, *.googlevideo.com, youtubei.googleapis.com, cdn-bm.camera360.com
