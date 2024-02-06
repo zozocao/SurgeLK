@@ -1,0 +1,15 @@
+#!name=Nicegram
+#!desc=Nicegrampremium
+http:
+  mitm:
+    - "nicegram.cloud"
+  script:
+    - match: ^https?:\/\/(nicegram\.cloud\/api\/v\d\/user\/info|restore-access\.indream\.app\/restoreAccess)
+      name: Nicegram
+      type: request
+      require-body: true
+      timeout: 10
+script-providers:
+  Nicegram:
+    url: https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/Nicegram.js
+    interval: 86400
