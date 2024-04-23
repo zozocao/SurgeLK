@@ -1,69 +1,50 @@
-if ($response.body) {
-    $done({
-        body: JSON.stringify({
-            "status": 200,
-            "data": {
-                "errorCode": 0,
-                "orderList": [{
-                    "quantity": "1",
-                    "purchase_date_ms": "1537703444000",
-                    "expires_date": "2028-06-06 06:06:06 Etc\/GMT",
-                    "expires_date_pst": "2028-06-06 06:06:06 America\/Los_Angeles",
-                    "is_in_intro_offer_period": "false",
-                    "transaction_id": "200000535242800",
-                    "is_trial_period": "true",
-                    "original_transaction_id": "200000535242800",
-                    "purchase_date": "2018-09-23 11:50:44 Etc\/GMT",
-                    "product_id": "com.vstudio.MIX.subscription.auto.year",
-                    "original_purchase_date_pst": "2018-09-23 04:50:44 America\/Los_Angeles",
-                    "original_purchase_date_ms": "1537703444000",
-                    "web_order_line_item_id": "200000140095730",
-                    "expires_date_ms": "1843855566000",
-                    "purchase_date_pst": "2018-09-23 04:50:44 America\/Los_Angeles",
-                    "original_purchase_date": "2018-09-23 11:50:44 Etc\/GMT"
-                }, {
-                    "quantity": "1",
-                    "purchase_date_ms": "1538401707000",
-                    "expires_date": "2028-06-06 06:06:06 Etc\/GMT",
-                    "expires_date_pst": "2028-06-06 06:06:06 America\/Los_Angeles",
-                    "is_in_intro_offer_period": "false",
-                    "transaction_id": "200000539102583",
-                    "is_trial_period": "false",
-                    "original_transaction_id": "200000535242800",
-                    "purchase_date": "2018-10-01 13:48:27 Etc\/GMT",
-                    "product_id": "com.vstudio.MIX.subscription.auto.year",
-                    "original_purchase_date_pst": "2018-09-23 04:50:44 America\/Los_Angeles",
-                    "original_purchase_date_ms": "1537703444000",
-                    "web_order_line_item_id": "200000140095731",
-                    "expires_date_ms": "1843855566000",
-                    "purchase_date_pst": "2018-10-01 06:48:27 America\/Los_Angeles",
-                    "original_purchase_date": "2018-09-23 11:50:44 Etc\/GMT"
-                }, {
-                    "product_id": "com.vstudio.MIX.Font.ruizigongfangcanlandaheijianonedotzero",
-                    "quantity": "1",
-                    "transaction_id": "200000577197848",
-                    "purchase_date_ms": "1546314438000",
-                    "original_purchase_date_pst": "2018-12-31 19:47:18 America\/Los_Angeles",
-                    "purchase_date_pst": "2018-12-31 19:47:18 America\/Los_Angeles",
-                    "original_purchase_date_ms": "1546314438000",
-                    "is_trial_period": "false",
-                    "original_purchase_date": "2019-01-01 03:47:18 Etc\/GMT",
-                    "original_transaction_id": "200000577197848",
-                    "purchase_date": "2019-01-01 03:47:18 Etc\/GMT"
-                }],
-                "autoBindingUserId": "043c8b571a3cd6c06e06db5f",
-                "pendingRenewalInfo": [{
-                    "product_id": "com.vstudio.MIX.subscription.auto.year",
-                    "original_transaction_id": "200000535242800",
-                    "auto_renew_product_id": "com.vstudio.MIX.subscription.auto.year",
-                    "auto_renew_status": "0"
-                }]
-            },
-            "message": "ok",
-            "exetime": "1555653929373-1555653933781",
-            "serverTime": 1555653933.7815001
-        })
-    });
-} else {
-    $done({})
+var chxm1023 = JSON.parse($response.body);
+const vip = '/mix/getinfo';
+const sj = '/mix/purchase';
+const hf = '/mix/recovery';
+const iap = '/iap/check-receipt';
+const purchase = {"errorCode":0,"orderList":[{"quantity":"1","product_id":"com.vstudio.MIX.subscription.auto.year.88","transaction_id":"490001516171224","original_transaction_id":"490001516171224","purchase_date":"2023-10-19 07:16:08 Etc/GMT","purchase_date_ms":"1697699768000","purchase_date_pst":"2023-10-19 00:16:08 America/Los_Angeles","original_purchase_date":"2023-10-19 07:16:08 Etc/GMT","original_purchase_date_ms":"1697699768000","original_purchase_date_pst":"2023-10-19 00:16:08 America/Los_Angeles","expires_date":"2099-09-09 09:09:09 Etc/GMT","expires_date_ms":"4092599349000","expires_date_pst":"2099-09-09 06:06:06 America/Los_Angeles","web_order_line_item_id":"490000704929786","is_trial_period":"true","is_in_intro_offer_period":"false","in_app_ownership_type":"PURCHASED"}],"autoBindingUserId":"","pendingRenewalInfo":[{"auto_renew_product_id":"com.vstudio.MIX.subscription.auto.year.88","product_id":"com.vstudio.MIX.subscription.auto.year.88","original_transaction_id":"490001516171224","auto_renew_status":"0"}]};
+
+if ($request.url.indexOf(vip) != -1){
+  chxm1023.data = {
+    "autoStatus" : 1,
+    "autoMobileMMType" : 2,
+    "expires" : 0,
+    "autoType" : 0,
+    "autoMobileMMStatus" : 1,
+    "autoMobileMMExpires" : 4092599349,
+    "serverTime" : 1697699768,
+    "isMiguVip" : 2,
+    "autoState" : 1,
+    "autoExpires" : 0,
+    "autoBindingTransactionIds" : [
+
+    ],
+    "status" : 2
+  };
 }
+
+if ($request.url.indexOf(sj) != -1){
+  chxm1023.data = (purchase);
+}
+
+if ($request.url.indexOf(hf) != -1){
+  chxm1023.data = (purchase);
+}
+
+if ($request.url.indexOf(iap) != -1){
+  chxm1023.data = {
+    "purchaseTime" : 1662685749,
+    "giftVip" : 1,
+    "isTrialPeriod" : 1,
+    "originalTransactionId" : "490001464780901",
+    "appleExpireTime" : 4092599349,
+    "productId" : "vip_yearly_3daysfree",
+    "appleVip" : 1,
+    "expireTime" : 4092599349,
+    "errorCode" : 0,
+    "operationVip" : 1,
+    "sandbox" : 0
+  };
+}
+$done({body : JSON.stringify(chxm1023)});
