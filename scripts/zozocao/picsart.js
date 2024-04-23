@@ -1,33 +1,38 @@
-var body = $response.body;
-var obj = JSON.parse(body);
-
-obj = {
-  "status": "success",
-  "response": [{
-    "status": "SUBSCRIPTION_PURCHASED",
-    "is_trial": false,
-    "order_id": "",
-    "plan_meta": {
-      "id": "com.picsart.studio.subscription_pro_yearly",
-      "frequency": "yearly",
-      "type": "renewable",
-      "scope_id": "full",
-      "product_id": "subscription_pro_yearly",
-      "description": "pro"
-    },
-    "limitation": {
-      "max_count": 10,
-      "limits_exceeded": false
-    },
-    "expire_date": 1872518379000,
-    "purchase_date": 1651639906000,
-    "subscription_id": "com.picsart.studio.subscription_pro_yearly",
-    "original_order_id": "",
-    "is_eligible_for_grant": false,
-    "is_eligible_for_introductory": false,
-    "reason": "ok"
-  }]
-}
-
-body = JSON.stringify(obj);
-$done({body});
+$done({
+    body: JSON.stringify({
+        "status": "success",
+        "response": [
+            {
+                "status": "SUBSCRIPTION_PURCHASED",
+                "order_id": "490001314520000",
+                "original_order_id": "490001314520000",
+                "is_trial": true,
+                "plan_meta": {
+                    "storage_limit_in_mb": 20480,
+                    "frequency": "yearly",
+                    "scope_id": "full",
+                    "id": "com.picsart.editor.subscription_yearly",
+                    "product_id": "subscription_yearly",
+                    "level": 2000,
+                    "auto_renew_product_id": "com.picsart.editor.subscription_yearly",
+                    "type": "renewable",
+                    "tier_id": "gold_old",
+                    "permissions": [
+                        "premium_tools_standard",
+                        "premium_tools_ai"
+                    ],
+                    "description": "china"
+                },
+                "limitation": {
+                    "max_count": 5,
+                    "limits_exceeded": false
+                },
+                "reason": "ok",
+                "subscription_id": "com.picsart.editor.subscription_yearly",
+                "is_eligible_for_introductory": false,
+                "purchase_date": 1687020148000,
+                "expire_date": 4092599349000
+            }
+        ]
+    })
+});
