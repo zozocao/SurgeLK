@@ -47,9 +47,6 @@ Camera360-Mix = requires-body=1,script-path=https://raw.githubusercontent.com/zo
 Photoroom = type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/?(.*?)*$),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/photoroom.js,script-update-interval=-1
 
 #************************************#
-#Picsart
-#hostname = api.picsart.com
-#Picsart=type=http-response,pattern=^https:\/\/api\.picsart\.com\/gw-v2\/shop\/subscription\/apple\/purchases,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/picsart.js
 
 #************************************#
 #Wink
@@ -71,4 +68,4 @@ Wallpaper = type=http-response,pattern=^https:\/\/billing-ios\.wallpaperscraft\.
 ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data="https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/blank.txt"
 
 [MITM]
-hostname = %APPEND% api-sub.meitu.com, *.wallpaperscraft.com, premium*.truecaller.com, api.picsart.com, nicegram.cloud, sub.store, ap*.intsig.net, app.monkeyuni.net, spclient.wg.spotify.com, *.googlevideo.com, youtubei.googleapis.com, *.camera360.com
+hostname = %APPEND% api-sub.meitu.com, *.wallpaperscraft.com, premium*.truecaller.com, nicegram.cloud, sub.store, ap*.intsig.net, app.monkeyuni.net, spclient.wg.spotify.com, *.googlevideo.com, youtubei.googleapis.com, *.camera360.com
