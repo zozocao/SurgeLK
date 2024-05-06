@@ -1,0 +1,106 @@
+name: AllinOne
+description: UnlockPremium
+map_locals:
+- match: ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad
+  to: https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/blank.txt
+scriptings:
+- http_request:
+    name: Sub-Store Core
+    match: ^https?:\/\/sub\.store\/((download)|api\/(preview|sync|(utils\/node-info)))
+    script_url: https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-1.min.js
+    timeout: 120
+    body_required: true
+- http_request:
+    name: Sub-Store Simple
+    match: ^https?:\/\/sub\.store
+    script_url: https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-0.min.js
+    body_required: true
+- schedule:
+    name: Sub-Store Sync
+    cron: 0 0 * * *
+    script_url: https://github.com/sub-store-org/Sub-Store/releases/latest/download/cron-sync-artifacts.min.js
+    timeout: 120
+- http_request:
+    name: youtube.request
+    match: ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence)
+    script_url: https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/youtube.request.preview.js
+    body_required: true
+    binary_body: true
+- http_response:
+    name: youtube.response
+    match: ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting)
+    script_url: https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/youtube.response.preview.js
+    arguments:
+      _compat.$argument: '"{"lyricLang":"{{{Lyrics translation language}}}","captionLang":"{{{Subtitle translation language}}}","blockUpload":{{{Block upload button}}},"blockImmersive":{{{Block selection button}}},"debug":{{{Enable debug mode}}}}"'
+    body_required: true
+    binary_body: true
+- http_response:
+    name: Camscanner
+    match: https:\/\/(api|api-cs.*)\.intsig\.net\/purchase\/cs\/query_prop
+    script_url: https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/camscaner.js
+    body_required: true
+- http_response:
+    name: Nicegram
+    match: ^https?:\/\/(nicegram\.cloud\/api\/v\d\/user\/info|restore-access\.indream\.app\/restoreAccess)
+    script_url: https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/Nicegram.js
+    body_required: true
+- http_request:
+    name: spotify-json
+    match: ^https:\/\/spclient\.wg\.spotify\.com\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/
+    script_url: https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-json.js
+    body_required: false
+- http_response:
+    name: spotify-proto
+    match: ^https:\/\/spclient\.wg\.spotify\.com\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$
+    script_url: https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js
+    body_required: true
+    binary_body: true
+- http_response:
+    name: Camera360
+    match: ^https?:\/\/.*\.camera360\.com\/(api\/(order\/purchase|iap\/check-receipt)|v\d\/operational-positions)
+    script_url: https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/camera360.js
+    body_required: true
+- http_response:
+    name: Camera360-Mix
+    match: ^https:\/\/cdn-bm\.camera360\.com\/api\/mix\/recovery
+    script_url: https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/mix.js
+    body_required: true
+- http_response:
+    name: Photoroom
+    match: ^https?:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/?(.*?)*$)
+    script_url: https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/photoroom.js
+    body_required: true
+- http_response:
+    name: Picsart
+    match: ^https:\/\/api\.picsart\.com\/gw-v2\/shop\/subscription\/apple\/purchases
+    script_url: https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/picsart.js
+    body_required: true
+- http_response:
+    name: Wink
+    match: ^https?:\/\/api-sub\.meitu\.com\/v2\/user\/vip_info_by_group\.json
+    script_url: https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/wink.js
+    body_required: true
+- http_response:
+    name: Truecaller
+    match: ^https://premium-(.+)\.truecaller\.com/v\d/(subscriptions|products\/apple)
+    script_url: https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/truecaller.js
+    body_required: true
+- http_response:
+    name: Wallpaper
+    match: ^https:\/\/billing-ios\.wallpaperscraft\.com\/verify_receipt\/remove_ads$
+    script_url: https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/WallCraftFProCrack.js
+    body_required: true
+mitm:
+  hostnames:
+  - api-sub.meitu.com
+  - api.picsart.com
+  - '*.wallpaperscraft.com'
+  - premium*.truecaller.com
+  - nicegram.cloud
+  - sub.store
+  - ap*.intsig.net
+  - app.monkeyuni.net
+  - spclient.wg.spotify.com
+  - '*.googlevideo.com'
+  - youtubei.googleapis.com
+  - '*.camera360.com'
