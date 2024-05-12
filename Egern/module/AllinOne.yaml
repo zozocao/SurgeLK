@@ -2,7 +2,7 @@ name: AllinOne
 description: UnlockPremium
 map_locals:
 - match: ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad
-  to: https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/blank.txt
+  body: ''
 scriptings:
 - http_request:
     name: Sub-Store Core
