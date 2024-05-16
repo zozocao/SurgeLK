@@ -15,55 +15,55 @@ cron "55 23 * * *" script-path=https://github.com/sub-store-org/Sub-Store/releas
 #************************************#
 #Youtube
 #hostname = *.googlevideo.com, youtubei.googleapis.com
-http-request ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch) script-path = https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Resource/Script/YouTube/YouTube_remove_ads/YouTube_remove_ads_request.js, requires-body = true, binary-body-mode = true, tag = YouTube请求
-http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch) script-path = https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Resource/Script/YouTube/YouTube_remove_ads/YouTube_remove_ads_response.js, requires-body = true, binary-body-mode = true, tag = YouTube响应
+http-request ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch) script-path=https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Resource/Script/YouTube/YouTube_remove_ads/YouTube_remove_ads_request.js, requires-body=true, binary-body-mode=true, tag=YouTube请求
+http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch) script-path=https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Resource/Script/YouTube/YouTube_remove_ads/YouTube_remove_ads_response.js, requires-body=true, binary-body-mode=true, tag=YouTube响应
 
 #************************************#
 #Camscanner
 #hostname = ap*.intsig.net
-http-response https:\/\/(api|api-cs.*)\.intsig\.net\/purchase\/cs\/query_prop requires-body=1,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/camscaner.js
+http-response https:\/\/(api|api-cs.*)\.intsig\.net\/purchase\/cs\/query_prop requires-body=1, script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/camscaner.js, tag=Camscanner
 
 #************************************#
 #Nicegram
 #hostname = nicegram.cloud
-http-response ^https?:\/\/(nicegram\.cloud\/api\/v\d\/user\/info|restore-access\.indream\.app\/restoreAccess) requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/Nicegram.js,script-update-interval=0
+http-response ^https?:\/\/(nicegram\.cloud\/api\/v\d\/user\/info|restore-access\.indream\.app\/restoreAccess) requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/Nicegram.js, script-update-interval=0, tag=Nicegram
 
 #************************************#
 #SpotifyPremium
 #hostname = spclient.wg.spotify.com
-http-request ^https:\/\/spclient\.wg\.spotify\.com\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/ requires-body=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-json.js
-http-response ^https:\/\/spclient\.wg\.spotify\.com\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$ requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js
+http-request ^https:\/\/spclient\.wg\.spotify\.com\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/ requires-body=0, script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-json.js, tag=Spotify
+http-response ^https:\/\/spclient\.wg\.spotify\.com\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$ requires-body=1, binary-body-mode=1, max-size=0, script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js, tag=Spotify
 
 #************************************#
 #Camera360-Mix
 #hostname = *.camera360.com
-http-response ^https?:\/\/.*\.camera360\.com\/(api\/(order\/purchase|iap\/check-receipt)|v\d\/operational-positions) requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/camera360.js,script-update-interval=0
-http-response ^https:\/\/cdn-bm\.camera360\.com\/api\/mix\/recovery requires-body=1,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/mix.js
+http-response ^https?:\/\/.*\.camera360\.com\/(api\/(order\/purchase|iap\/check-receipt)|v\d\/operational-positions) requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/camera360.js, script-update-interval=0, tag=Camera360
+http-response ^https:\/\/cdn-bm\.camera360\.com\/api\/mix\/recovery requires-body=1, script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/mix.js, tag=MIX
 
 #************************************#
 #Photoroom
 #hostname = api.revenuecat.com
-http-response ^https?:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/?(.*?)*$) requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/photoroom.js,script-update-interval=-1
+http-response ^https?:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/?(.*?)*$) requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/photoroom.js,script-update-interval=-1, tag=Photoroom
 
 #************************************#
 #Picsart
 #hostname = api.picsart.com
-http-response ^https:\/\/api\.picsart\.com\/gw-v2\/shop\/subscription\/apple\/purchases requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/picsart.js
+http-response ^https:\/\/api\.picsart\.com\/gw-v2\/shop\/subscription\/apple\/purchases requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/picsart.js, tag=Picsart
 
 #************************************#
 #Wink
 #hostname = api-sub.meitu.com
-http-response ^https?:\/\/api-sub\.meitu\.com\/v2\/user\/vip_info_by_group\.json requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/wink.js
+http-response ^https?:\/\/api-sub\.meitu\.com\/v2\/user\/vip_info_by_group\.json requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/wink.js, tag=Wink
 
 #************************************#
 #Truecaller
 #hostname = premium*.truecaller.com
-http-response ^https://premium-(.+)\.truecaller\.com/v\d/(subscriptions|products\/apple) requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/truecaller.js
+http-response ^https://premium-(.+)\.truecaller\.com/v\d/(subscriptions|products\/apple) requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/truecaller.js, tag=Truecaller
 
 #************************************#
 #Wallpaper
 #hostname = premium*.truecaller.com
-http-response ^https:\/\/billing-ios\.wallpaperscraft\.com\/verify_receipt\/remove_ads$ requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/WallCraftFProCrack.js
+http-response ^https:\/\/billing-ios\.wallpaperscraft\.com\/verify_receipt\/remove_ads$ requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/WallCraftFProCrack.js, tag=WallCraft
 
 #************************************#
 [Map Local]
