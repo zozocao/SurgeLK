@@ -1,6 +1,5 @@
 [Script]
-http-response ^https?:\/\/api\.photoroom\.com\/.+\/(receipts$|subscribers\/?(.*?)*$) requires-body=1,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/photoroom.js,script-update-interval=-1, tag=Photoroom
-http-request ^https?:\/\/api\.photoroom\.com\/.+\/(receipts$|subscribers\/?(.*?)*$) requires-body=1,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/photoroom.js,script-update-interval=-1, tag=Photoroom
+http-response ^https?:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/?(.*?)*$) script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/photoroom.js, tag=Photoroom
 
 [MITM]
-hostname=api.photoroom.com
+hostname=api.revenuecat.com
