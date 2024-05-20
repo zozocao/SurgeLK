@@ -1,0 +1,5 @@
+[Script]
+http-response ^https?:\/\/api\.chatgp5\.cc\/app\/user\/getCurrentInfo script-pathhttps://raw.githubusercontent.com/Rnik666/YJTJS/main/AIBot.js
+
+[MITM]
+hostname = api.chatgp5.cc
