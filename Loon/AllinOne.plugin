@@ -78,8 +78,13 @@ http-response ^https:\/\/billing-ios\.wallpaperscraft\.com\/verify_receipt\/remo
 http-response ^https?:\/\/api\.chatgp5\.cc\/app\/user\/getCurrentInfo requires-body=1,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/chat.js
 
 #************************************#
+#RevenueCat
+#hostname = api.revenuecat.com
+http_response ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$) requires-body=1,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/revenuecat1.js
+
+#************************************#
 [Map Local]
 ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data-type=text data=""
 
 [MITM]
-hostname=api-sub.meitu.com,api.picsart.com,*.wallpaperscraft.com,premium*.truecaller.com,nicegram.cloud,sub.store,ap*.intsig.net,app.monkeyuni.net,spclient.wg.spotify.com,*.googlevideo.com,youtubei.googleapis.com,*.camera360.com,api.chatgp5.cc
+hostname=api-sub.meitu.com,api.picsart.com,*.wallpaperscraft.com,premium*.truecaller.com,nicegram.cloud,sub.store,ap*.intsig.net,app.monkeyuni.net,spclient.wg.spotify.com,*.googlevideo.com,youtubei.googleapis.com,*.camera360.com,api.chatgp5.cc,api.revenuecat.com
