@@ -81,7 +81,7 @@ http-response ^https?:\/\/api\.chatgp5\.cc\/app\/user\/getCurrentInfo requires-b
 #RevenueCat
 #hostname = api.revenuecat.com
 http_response ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$) requires-body=1,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/revenuecat1.js, tag=RevenueCatRp
-http_request ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$) requires-body=1,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/revenuecat1.js, tag=RevenueCatRq
+http_request ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$) requires-body=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/revenuecat1.js, tag=RevenueCatRq
 
 #************************************#
 [Map Local]
