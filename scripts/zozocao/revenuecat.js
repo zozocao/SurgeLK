@@ -1,39 +1,67 @@
-const resp = {};
-const obj = JSON.parse(typeof $response != "undefined" && $response.body || null);
+var request = $request;
 
-const ua = $request.headers['User-Agent'] || $request.headers['user-agent'];
-const list = {
-	'VSCO': { name: 'membership', id: 'com.circles.fin.premium.yearly' },
-	'1Blocker': { name: 'premium', id: 'blocker.ios.subscription.yearly' },
-	'Anybox': { name: 'pro', id: 'cc.anybox.Anybox.annual' },
-	'Fileball': { name: 'filebox_pro', id: 'com.premium.yearly' },
-	'ipTV': { name: 'ipTV +', id: 'iptv_9.99_1y_7d_free' },
-	'APTV': { name: 'pro', id: 'com.kimen.aptvpro.lifetime' },
-	'Blink': { name: 'pro', id: 'blink_shell_plus_1y_1999' },
-        'mizframa': { name: 'premium', id: 'mf_20_lifetime2' },
-        'CallRecorder': { name: 'subscriptions', id: 'com.prettyboa.CallRecorder.MonthlySubscription2999' }
-};
-const data = {
-	"expires_date": "2099-02-18T07:52:54Z",
-	"original_purchase_date": "2020-02-11T07:52:55Z",
-	"purchase_date": "2020-02-11T07:52:54Z"
-};
-
-if (typeof $response == "undefined") {
-	delete $request.headers["x-revenuecat-etag"]; // prevent 304 issues
-	delete $request.headers["X-RevenueCat-ETag"];
-	resp.headers = $request.headers;
-} else if (obj && obj.subscriber) {
-	obj.subscriber.subscriptions = obj.subscriber.subscriptions || {};
-	obj.subscriber.entitlement = obj.subscriber.entitlement || {};
-	for (const i in list) {
-		if (new RegExp(`^${i}`, `i`).test(ua)) {
-			obj.subscriber.subscriptions[list[i].id] = data;
-			obj.subscriber.entitlements[list[i].name] = JSON.parse(JSON.stringify(data));
-			obj.subscriber.entitlements[list[i].name].product_identifier = list[i].id;
-			break;
-		}
-	}
-	resp.body = JSON.stringify(obj).replace(/\"expires_date\":\"\w{4}/g, "\"expires_date\":\"2099").replace(/\"period_type\":\"\w+\"/g, "\"period_type\":\"active\"");
+const options = {
+    url: "https://api.revenuecat.com/v1/product_entitlement_mapping",
+    headers: {
+     'Authorization' : request.headers["authorization"],
+     'X-Platform' : 'iOS' ,
+     'User-Agent' : request.headers["user-agent"]
+    }
 }
-$done(resp);
+
+$httpClient.get(options, function(error, newResponse, data){
+  
+const ent = JSON.parse(data);
+
+let jsonToUpdate = {
+        "request_date_ms": 1704070861000,
+        "request_date": "2024-01-01T01:01:01Z",
+        "subscriber": {
+            "entitlement": {},
+            "first_seen": "2024-01-01T01:01:01Z",
+            "original_application_version": "9692",
+            "last_seen": "2024-01-01T01:01:01Z",
+            "other_purchases": {},
+            "management_url": null,
+            "subscriptions": {},
+            "entitlements": {},
+            "original_purchase_date": "2024-01-01T01:01:01Z",
+            "original_app_user_id": "70B24288-83C4-4035-B001-573285B21AE2",
+            "non_subscriptions": {}
+        }
+    };
+
+const productEntitlementMapping = ent.product_entitlement_mapping
+
+for (const [entitlementId, productInfo] of Object.entries(productEntitlementMapping)) {
+  const productIdentifier = productInfo.product_identifier;
+  const entitlements = productInfo.entitlements;
+
+
+  for (const entitlement of entitlements) {
+    jsonToUpdate.subscriber.entitlements[entitlement] = {
+      "purchase_date": "2024-01-01T01:01:01Z",
+      "original_purchase_date": "2024-01-01T01:01:01Z",
+      "expires_date": "9692-01-01T01:01:01Z",
+      "is_sandbox" : false,
+      "ownership_type": "PURCHASED",
+      "store": "app_store",
+      "product_identifier": productIdentifier
+    };
+
+    // Add product identifier to subscriptions
+    jsonToUpdate.subscriber.subscriptions[productIdentifier] = {
+      "expires_date": "9692-01-01T01:01:01Z",
+      "original_purchase_date": "2024-01-01T01:01:01Z",
+      "purchase_date": "2024-01-01T01:01:01Z",
+      "is_sandbox" : false,
+      "ownership_type": "PURCHASED",
+      "store": "app_store"
+    };
+  }
+}
+
+body = JSON.stringify(jsonToUpdate);
+$done({body});
+
+});
