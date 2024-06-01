@@ -111,3 +111,4 @@ mitm:
   - '*.googlevideo.com'
   - youtubei.googleapis.com
   - '*.camera360.com'
+  - api.revenuecat.com
