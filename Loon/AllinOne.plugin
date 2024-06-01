@@ -47,10 +47,10 @@ http-response ^https?:\/\/.*\.camera360\.com\/(api\/(order\/purchase|iap\/check-
 http-response ^https:\/\/cdn-bm\.camera360\.com\/api\/mix\/recovery requires-body=1, script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/mix.js, tag=MIX
 
 #************************************#
-#Photoroom
+#Revenuecat
 #hostname = api.revenuecat.com
-#http-response ^https?:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/?(.*?)*$) script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/photoroom.js, requires-body=true, tag=RevenuecatUnlock
-#http-request ^https?:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/?(.*?)*$) script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/photoroom.js, requires-body=false, tag=Reheji
+#http-response ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$) script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/revenuecat.js, requires-body=true, tag=RevenuecatUnlock
+#http-request ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$) script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/revenuecat.js, requires-body=false, tag=RevenuecatUnlock
 
 #************************************#
 #Picsart
