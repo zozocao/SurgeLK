@@ -49,8 +49,8 @@ http-response ^https:\/\/cdn-bm\.camera360\.com\/api\/mix\/recovery requires-bod
 #************************************#
 #Revenuecat
 #hostname = api.revenuecat.com
-#http-response ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$) script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/revenuecat.js, requires-body=true, tag=RevenuecatUnlock
-#http-request ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$) script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/revenuecat.js, requires-body=false, tag=RevenuecatUnlock
+http-response ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$) script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/revenuecat.js, requires-body=true, tag=RevenuecatUnlock
+http-request ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$) script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/revenuecat.js, requires-body=false, tag=RevenuecatUnlock
 
 #************************************#
 #Picsart
@@ -78,11 +78,6 @@ http-response ^https:\/\/billing-ios\.wallpaperscraft\.com\/verify_receipt\/remo
 http-response ^https?:\/\/api\.chatgp5\.cc\/app\/user\/getCurrentInfo requires-body=1,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/chat.js, tag=Chatgp5
 
 #************************************#
-#RevenueCat
-#hostname = api.revenuecat.com
-http-response ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$) requires-body=1,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/revenuecat1.js, tag=RevenueCatRp
-http-request ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$) requires-body=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/revenuecat1.js, tag=RevenueCatRq
-
 #************************************#
 [Map Local]
 ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad data-type=text data=""
