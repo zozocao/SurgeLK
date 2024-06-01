@@ -3,6 +3,15 @@ description: UnlockPremium
 map_locals:
 - match: ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad
   body: ''
+  header_rewrites:
+- delete:
+    match: ^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$)
+    name: x-revenuecat-etag
+    type: request
+- delete:
+    match: ^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$)
+    name: X-RevenueCat-ETag
+    type: request
 scriptings:
 - http_request:
     name: Sub-Store Core
@@ -64,9 +73,9 @@ scriptings:
     script_url: https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/mix.js
     body_required: true
 - http_response:
-    name: Photoroom
-    match: ^https?:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/?(.*?)*$)
-    script_url: https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/photoroom.js
+    name: Revenuecat
+    match: ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$)
+    script_url: https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/revenuecat.js
     body_required: true
 - http_response:
     name: Picsart
