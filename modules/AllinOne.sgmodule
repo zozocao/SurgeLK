@@ -5,12 +5,15 @@
 AND,((DOMAIN-SUFFIX,googlevideo.com), (PROTOCOL,UDP)),REJECT
 AND,((DOMAIN,youtubei.googleapis.com), (PROTOCOL,UDP)),REJECT
 
+[Header Rewrite]
+^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del x-revenuecat-etag
+^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del X-RevenueCat-ETag
+
 [Script]
 #Sub-Store
 #hostname = sub.store
 Sub-Store Core=type=http-request,pattern=^https?:\/\/sub\.store\/((download)|api\/(preview|sync|(utils\/node-info))),script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-1.min.js,requires-body=true,timeout=120
 Sub-Store Simple=type=http-request,pattern=^https?:\/\/sub\.store,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-0.min.js,requires-body=true
-
 Sub-Store Sync=type=cron,cronexp=0 0 * * *,wake-system=1,timeout=120,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/cron-sync-artifacts.min.js
 
 #************************************#
@@ -42,9 +45,9 @@ Camera360 = type=http-response,pattern=^https?:\/\/.*\.camera360\.com\/(api\/(or
 Camera360-Mix = requires-body=1,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/mix.js,type=http-response,pattern=^https:\/\/cdn-bm\.camera360\.com\/api\/mix\/recovery
 
 #************************************#
-#Photoroom
+#Revenuecat
 #hostname = api.revenuecat.com
-Photoroom = type=http-response,pattern=^https?:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/?(.*?)*$),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/photoroom.js,script-update-interval=-1
+Revenuecat = type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zozocao/SurgeLK/main/scripts/zozocao/revenuecat.js,script-update-interval=-1
 
 #************************************#
 #Picsart
