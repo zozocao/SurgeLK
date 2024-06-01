@@ -3,7 +3,7 @@ description: UnlockPremium
 map_locals:
 - match: ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad
   body: ''
-  header_rewrites:
+header_rewrites:
 - delete:
     match: ^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$)
     name: x-revenuecat-etag
